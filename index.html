@@ -6,6 +6,8 @@
   <title>Chapa 62 · Smash burger em Goiânia</title>
   <meta name="description" content="Cardápio da Chapa 62, smash burger em Goiânia. Monte a comanda pelo celular e mande o pedido no WhatsApp: entrega, retirada ou direto da mesa.">
   <meta name="author" content="Camilla Paschoal">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src https://www.openstreetmap.org; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="theme-color" content="#EDB82E">
 
   <meta property="og:type" content="website">
@@ -29,7 +31,7 @@
 
   <link rel="preload" href="assets/fonts/bricolage-800.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/bricolage-500.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles/style.css?v=3">
+  <link rel="stylesheet" href="styles/style.css?v=4">
 </head>
 <body>
   <a class="pular" href="#cardapio">Pular para o cardápio</a>
@@ -157,18 +159,22 @@
 
         <dl class="comanda-contas" id="contas"></dl>
 
+        <p class="aviso" id="aviso-fechado" hidden></p>
         <p class="erro" id="erro" role="alert"></p>
         <button class="enviar" type="submit" id="enviar">Enviar pedido no WhatsApp</button>
       </form>
 
       <div class="demo" id="demo" hidden>
-        <p><strong>Modo demonstração.</strong> Este modelo não tem número de WhatsApp configurado. Esta é a mensagem que o restaurante receberia:</p>
+        <p id="enviado-txt"></p>
         <pre id="demo-msg"></pre>
+        <p class="copiar-dica" id="copiar-dica" role="status"></p>
         <button type="button" class="copiar" id="copiar">Copiar mensagem</button>
+        <button type="button" class="novo" id="novo">Limpar comanda e começar outro pedido</button>
+        <button type="button" class="editar" id="editar">Voltar e editar o pedido</button>
       </div>
     </div>
   </dialog>
 
-  <script src="scripts/app.js?v=3" defer></script>
+  <script src="scripts/app.js?v=4" defer></script>
 </body>
 </html>

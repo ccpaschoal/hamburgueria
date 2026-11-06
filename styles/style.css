@@ -302,3 +302,23 @@ address { font-style: normal; font-size: 1.1rem; }
   .status { order: 3; width: 100%; }
   .abertura-foto { width: min(64%, 300px); justify-self: end; margin-top: -8px; }
 }
+
+/* ===== Avisos, pós-envio e plano B da comanda ===== */
+.aviso { margin: 14px 0 0; padding: 10px 12px; border-radius: 8px; background: rgb(237 184 46 / .3); font-size: .85rem; }
+.aviso[hidden] { display: none; }
+.enviar:disabled { opacity: .55; cursor: not-allowed; }
+.passo button:disabled { opacity: .35; cursor: not-allowed; }
+.copiar-dica { font-size: .82rem; margin: 8px 0 0; }
+.copiar-dica:empty { display: none; }
+.novo, .editar {
+  width: 100%; margin-top: 10px; padding: 13px 16px; border-radius: 12px; font-family: var(--sans); font-weight: 700; font-size: 1rem;
+  background: none; border: 2px solid var(--cafe);
+}
+.editar { border: 0; text-decoration: underline; text-underline-offset: 3px; font-weight: 600; padding: 8px; }
+.demo a { font-weight: 700; }
+.comanda-dialog.sem-dialog[open] {
+  position: fixed; inset: auto 0 0 0; z-index: 100; display: block;
+  box-shadow: 0 0 0 100vmax rgb(42 23 11 / .6);
+}
+@media (min-width: 820px) { .comanda-dialog.sem-dialog[open] { inset: 0 24px 0 auto; display: flex; align-items: center; } }
+body.travado { overflow: hidden; }
