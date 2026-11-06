@@ -1,0 +1,69 @@
+{
+  "categorias": [
+    {
+      "id": "smash",
+      "nome": "Smash",
+      "itens": [
+        { "id": "classico", "nome": "Clássico 62", "desc": "Pão de batata, smash de 90 g, cheddar derretido, picles, cebola picada e molho da casa.", "preco": 29.9, "foto": "hero", "destaque": true },
+        { "id": "duplo", "nome": "Duplo", "desc": "Dois smash, duas fatias de cheddar e cebola caramelizada na chapa.", "preco": 36.9, "foto": "duplo" },
+        { "id": "bacon", "nome": "Bacon na chapa", "desc": "Smash duplo, bacon crocante, cheddar e maionese defumada.", "preco": 39.9, "foto": "bacon" },
+        { "id": "picante", "nome": "Picante", "desc": "Smash, queijo prato, jalapeño, cebola roxa e maionese de pimenta.", "preco": 34.9 },
+        { "id": "frango", "nome": "Frango crocante", "desc": "Sobrecoxa empanada, salada de pepino e repolho, molho picante adocicado.", "preco": 34.9, "foto": "frango" }
+      ]
+    },
+    {
+      "id": "veggie",
+      "nome": "Veggie",
+      "itens": [
+        { "id": "cogumelo", "nome": "Cogumelo", "desc": "Hambúrguer de cogumelos, queijo derretido, rúcula e maionese de alho.", "preco": 33.9, "foto": "cogumelo", "veggie": true },
+        { "id": "grao", "nome": "Grão-de-bico", "desc": "Hambúrguer de grão-de-bico, picles, tomate e molho verde. Sem ingredientes de origem animal.", "preco": 31.9, "foto": "veggie", "veggie": true }
+      ]
+    },
+    {
+      "id": "combos",
+      "nome": "Combos",
+      "itens": [
+        { "id": "combo62", "nome": "Combo 62", "desc": "Clássico 62, fritas da casa e refrigerante lata.", "preco": 44.9, "foto": "combo" },
+        { "id": "comboduplo", "nome": "Combo Duplo", "desc": "Duplo, fritas da casa e refrigerante lata.", "preco": 51.9 }
+      ]
+    },
+    {
+      "id": "porcoes",
+      "nome": "Porções",
+      "itens": [
+        { "id": "fritas", "nome": "Fritas da casa", "desc": "Batata com casca, sal e páprica.", "preco": 14.9, "veggie": true },
+        { "id": "fritascb", "nome": "Fritas com cheddar e bacon", "desc": "Fritas da casa cobertas com cheddar cremoso e bacon.", "preco": 22.9 },
+        { "id": "onion", "nome": "Onion rings", "desc": "Anéis de cebola empanados, com maionese da casa.", "preco": 18.9, "foto": "onion", "veggie": true }
+      ]
+    },
+    {
+      "id": "bebidas",
+      "nome": "Bebidas",
+      "itens": [
+        { "id": "shake", "nome": "Shake de doce de leite", "desc": "400 ml, sorvete de creme batido com doce de leite.", "preco": 19.9, "foto": "shake", "veggie": true },
+        { "id": "limonada", "nome": "Limonada da casa", "desc": "500 ml, limão e hortelã.", "preco": 9.9, "veggie": true },
+        { "id": "refri", "nome": "Refrigerante lata", "desc": "350 ml. Pergunte os sabores na observação.", "preco": 7.0, "veggie": true },
+        { "id": "agua", "nome": "Água", "desc": "500 ml, com ou sem gás.", "preco": 5.0, "veggie": true }
+      ]
+    },
+    {
+      "id": "doces",
+      "nome": "Doces",
+      "itens": [
+        { "id": "brownie", "nome": "Brownie com sorvete", "desc": "Brownie quente de chocolate meio amargo e uma bola de creme.", "preco": 16.9, "foto": "brownie", "veggie": true }
+      ]
+    }
+  ],
+  "creditos": [
+    { "foto": "hero", "titulo": "Smash burger - Cambridge, MA", "autor": "Daderot", "licenca": "CC0" },
+    { "foto": "duplo", "titulo": "Cheeseburger with fries - Massachusetts", "autor": "Daderot", "licenca": "CC0" },
+    { "foto": "bacon", "titulo": "Klompus Burger With Bacon and French Fries", "autor": "Theipu", "licenca": "CC0" },
+    { "foto": "frango", "titulo": "Korean fried chicken sandwich - Cambridge, MA", "autor": "Daderot", "licenca": "CC0" },
+    { "foto": "cogumelo", "titulo": "Mushroom vegetarian burger", "autor": "Andy Li", "licenca": "CC0" },
+    { "foto": "veggie", "titulo": "Fancy Veggie Burger and Fries", "autor": "Andy Li", "licenca": "CC0" },
+    { "foto": "combo", "titulo": "Cheeseburger and fries 4", "autor": "Kurtkaiser", "licenca": "CC0" },
+    { "foto": "onion", "titulo": "Onion rings", "autor": "Andy Li", "licenca": "CC0" },
+    { "foto": "shake", "titulo": "Milo milkshake", "autor": "Andy Li", "licenca": "CC0" },
+    { "foto": "brownie", "titulo": "Brownie cake with ice cream", "autor": "Gayathrijagan", "licenca": "CC0" }
+  ]
+}

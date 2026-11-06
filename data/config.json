@@ -1,0 +1,29 @@
+{
+  "nome": "Chapa 62",
+  "descricao": "Smash burger na chapa, em Goiânia. Peça pelo celular: entrega, retirada ou direto da mesa.",
+  "whatsapp": "",
+  "instagram": "chapa62",
+  "endereco": "Rua 62, 380 · Setor Central",
+  "cidade": "Goiânia · GO",
+  "mapa": { "lat": -16.6799, "lon": -49.2550 },
+  "taxaEntrega": 7.0,
+  "pedidoMinimo": 25.0,
+  "tempoEntrega": "35 a 50 min",
+  "pix": "chapa62@exemplo.com",
+  "horarios": [
+    { "dia": "Domingo", "abre": "18:00", "fecha": "23:00" },
+    { "dia": "Segunda", "abre": null, "fecha": null },
+    { "dia": "Terça", "abre": "18:00", "fecha": "23:00" },
+    { "dia": "Quarta", "abre": "18:00", "fecha": "23:00" },
+    { "dia": "Quinta", "abre": "18:00", "fecha": "23:00" },
+    { "dia": "Sexta", "abre": "18:00", "fecha": "00:30" },
+    { "dia": "Sábado", "abre": "18:00", "fecha": "00:30" }
+  ],
+  "cores": {
+    "fundo": "#EDB82E",
+    "texto": "#2A170B",
+    "destaque": "#B8231A",
+    "detalhe": "#4F6B1E",
+    "papel": "#FFFBEE"
+  }
+}

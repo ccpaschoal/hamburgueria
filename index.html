@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Chapa 62 · Smash burger em Goiânia</title>
+  <meta name="description" content="Cardápio da Chapa 62, smash burger em Goiânia. Monte a comanda pelo celular e mande o pedido no WhatsApp: entrega, retirada ou direto da mesa.">
+  <meta name="author" content="Camilla Paschoal">
+  <meta name="theme-color" content="#EDB82E">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Chapa 62 · Smash burger em Goiânia">
+  <meta property="og:description" content="Monte a comanda pelo celular e mande o pedido no WhatsApp.">
+  <meta property="og:url" content="https://ccpaschoal.github.io/modelo-restaurante/">
+  <link rel="canonical" href="https://ccpaschoal.github.io/modelo-restaurante/">
+  <meta property="og:image" content="https://ccpaschoal.github.io/modelo-restaurante/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="Chapa 62, smash burger em Goiânia">
+  <meta property="og:site_name" content="Chapa 62">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://ccpaschoal.github.io/modelo-restaurante/assets/og-image.jpg">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23EDB82E'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='900' font-size='30' fill='%232A170B' text-anchor='middle'%3E62%3C/text%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <link rel="preload" href="assets/fonts/bricolage-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/bricolage-500.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles/style.css?v=2">
+</head>
+<body>
+  <a class="pular" href="#cardapio">Pular para o cardápio</a>
+
+  <header class="topo">
+    <a class="marca" href="#" aria-label="Chapa 62, início">Chapa 62</a>
+    <p class="status" id="status" aria-live="polite"></p>
+    <a class="topo-link" href="#info">Horários e endereço</a>
+  </header>
+
+  <main>
+    <section class="abertura" aria-labelledby="titulo">
+      <div class="abertura-texto">
+        <h1 id="titulo">Smash na chapa, pedido no celular.</h1>
+        <p class="abertura-sub" id="sub">Escolha no cardápio, confira a comanda e mande o pedido no WhatsApp.</p>
+
+        <fieldset class="modo" id="modo">
+          <legend>Como você quer receber?</legend>
+          <label><input type="radio" name="modo" value="entrega" checked> <span>Entrega</span></label>
+          <label><input type="radio" name="modo" value="retirada"> <span>Retirar no balcão</span></label>
+          <label class="modo-mesa" hidden><input type="radio" name="modo" value="mesa"> <span id="modo-mesa-txt">Mesa</span></label>
+        </fieldset>
+        <p class="modo-info" id="modo-info"></p>
+      </div>
+      <figure class="abertura-foto">
+        <img src="assets/fotos/hero.jpg" width="960" height="960" alt="Smash burger com queijo derretido e picles, servido em papel" fetchpriority="high">
+      </figure>
+    </section>
+
+    <section class="cardapio" id="cardapio" aria-labelledby="cardapio-titulo">
+      <h2 id="cardapio-titulo" class="sr-only">Cardápio</h2>
+      <div class="filtros">
+        <nav class="chips" id="chips" aria-label="Categorias"></nav>
+        <div class="filtros-linha">
+          <label class="busca">
+            <span class="sr-only">Buscar no cardápio</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+            <input type="search" id="busca" placeholder="Buscar: bacon, cheddar, shake…" autocomplete="off">
+          </label>
+          <label class="veggie-toggle">
+            <input type="checkbox" id="so-veggie">
+            <span>Só veggie</span>
+          </label>
+        </div>
+      </div>
+      <div id="lista" class="lista"></div>
+      <p class="vazio" id="vazio" hidden>Nada com esse nome no cardápio. Tente outra palavra ou limpe a busca.</p>
+    </section>
+
+    <section class="info" id="info" aria-labelledby="info-titulo">
+      <h2 id="info-titulo">Onde e quando</h2>
+      <div class="info-grade">
+        <div>
+          <h3>Horários</h3>
+          <table class="horarios" id="horarios"></table>
+        </div>
+        <div>
+          <h3>Endereço</h3>
+          <address id="endereco"></address>
+          <p class="info-links">
+            <a id="link-mapa" href="#" target="_blank" rel="noopener">Abrir no mapa</a>
+            <a id="link-insta" href="#" target="_blank" rel="noopener">Instagram</a>
+          </p>
+          <div class="mapa" id="mapa"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>Chapa 62 é um restaurante fictício, criado como modelo de site para restaurantes por <a href="https://ccpaschoal.github.io/">Camilla Paschoal</a>.</p>
+    <details>
+      <summary>Créditos das fotos</summary>
+      <ul id="creditos"></ul>
+    </details>
+  </footer>
+
+  <button class="barra" id="barra" type="button" hidden aria-haspopup="dialog">
+    <span id="barra-qtd"></span>
+    <span id="barra-total"></span>
+    <strong>Ver comanda</strong>
+  </button>
+
+  <dialog class="comanda-dialog" id="comanda" aria-labelledby="comanda-titulo">
+    <div class="comanda">
+      <div class="comanda-topo">
+        <p class="comanda-casa" id="comanda-casa">CHAPA 62</p>
+        <h2 id="comanda-titulo">Sua comanda</h2>
+        <p class="comanda-data" id="comanda-data"></p>
+        <button type="button" class="fechar" id="fechar" aria-label="Fechar comanda">×</button>
+      </div>
+
+      <ul class="comanda-itens" id="comanda-itens"></ul>
+      <p class="comanda-vazia" id="comanda-vazia" hidden>A comanda está vazia. Volte ao cardápio e toque em + para adicionar.</p>
+
+      <form id="form-pedido" novalidate>
+        <div class="campo">
+          <label for="nome">Seu nome</label>
+          <input id="nome" name="nome" autocomplete="name" required>
+        </div>
+
+        <fieldset class="campo campo-opcoes" id="campo-modo">
+          <legend>Receber</legend>
+          <label><input type="radio" name="modo2" value="entrega"> Entrega</label>
+          <label><input type="radio" name="modo2" value="retirada"> Retirada</label>
+          <label class="modo-mesa" hidden><input type="radio" name="modo2" value="mesa"> <span class="mesa-txt">Mesa</span></label>
+        </fieldset>
+
+        <div class="campo" id="campo-endereco">
+          <label for="endereco-entrega">Endereço de entrega</label>
+          <textarea id="endereco-entrega" name="endereco" rows="2" autocomplete="street-address" placeholder="Rua, número, bairro e referência"></textarea>
+        </div>
+
+        <fieldset class="campo campo-opcoes" id="campo-pagamento">
+          <legend>Pagamento</legend>
+          <label><input type="radio" name="pagamento" value="Pix" checked> Pix</label>
+          <label><input type="radio" name="pagamento" value="Cartão"> Cartão</label>
+          <label><input type="radio" name="pagamento" value="Dinheiro"> Dinheiro</label>
+        </fieldset>
+
+        <div class="campo" id="campo-troco" hidden>
+          <label for="troco">Troco para quanto?</label>
+          <input id="troco" name="troco" inputmode="decimal" placeholder="Ex.: 100">
+        </div>
+
+        <dl class="comanda-contas" id="contas"></dl>
+
+        <p class="erro" id="erro" role="alert"></p>
+        <button class="enviar" type="submit" id="enviar">Enviar pedido no WhatsApp</button>
+      </form>
+
+      <div class="demo" id="demo" hidden>
+        <p><strong>Modo demonstração.</strong> Este modelo não tem número de WhatsApp configurado. Esta é a mensagem que o restaurante receberia:</p>
+        <pre id="demo-msg"></pre>
+        <button type="button" class="copiar" id="copiar">Copiar mensagem</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="scripts/app.js?v=2" defer></script>
+</body>
+</html>
