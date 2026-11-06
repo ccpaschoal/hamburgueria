@@ -133,12 +133,19 @@
         if (!e.isIntersecting) return;
         $$('#chips a').forEach(function (a) {
           var ativo = a.getAttribute('href') === '#' + e.target.id;
-          if (ativo) { a.setAttribute('aria-current', 'true'); a.scrollIntoView({ block: 'nearest', inline: 'nearest' }); }
+          if (ativo) { a.setAttribute('aria-current', 'true'); mostrarChip(a); }
           else a.removeAttribute('aria-current');
         });
       });
     }, { rootMargin: '-140px 0px -60% 0px' });
     $$('.categoria').forEach(function (c) { io.observe(c); });
+  }
+
+  // Rola só a fileira de chips na horizontal (scrollIntoView mexia na rolagem da página)
+  function mostrarChip(a) {
+    var chips = $('#chips'), c = chips.getBoundingClientRect(), r = a.getBoundingClientRect();
+    if (r.left >= c.left && r.right <= c.right) return;
+    chips.scrollTo({ left: chips.scrollLeft + (r.left - c.left) - 8, behavior: 'smooth' });
   }
 
   /* ---------- Comanda (estado) ---------- */

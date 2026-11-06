@@ -1,7 +1,7 @@
 /* Cache do site para abrir rápido e funcionar sem internet.
    Ao mudar arquivos, troque a VERSAO. */
-var VERSAO = 'chapa62-v2';
-var BASE = ['./', 'index.html', 'styles/style.css?v=2', 'scripts/app.js?v=2', 'manifest.webmanifest',
+var VERSAO = 'chapa62-v3';
+var BASE = ['./', 'index.html', 'styles/style.css?v=3', 'scripts/app.js?v=3', 'manifest.webmanifest',
   'assets/fonts/bricolage-800.woff2', 'assets/fonts/bricolage-500.woff2', 'assets/fonts/mono-400.woff2', 'assets/fonts/mono-700.woff2',
   'assets/fotos/hero.jpg'];
 
