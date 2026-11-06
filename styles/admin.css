@@ -4,17 +4,41 @@ body.admin { background: var(--cafe); color: var(--papel); }
 .adm-topo { display: flex; align-items: baseline; gap: 14px; max-width: 1180px; margin: 0 auto; padding: 18px var(--gutter) 8px; }
 .adm-topo .marca { margin: 0; color: var(--mostarda); }
 .adm-topo h1 { margin: 0; font-size: 1.5rem; letter-spacing: -.03em; font-weight: 800; }
-.adm-sair { margin-left: auto; background: none; border: 2px solid var(--papel); border-radius: 999px; padding: 6px 14px; font-weight: 600; }
+.adm-sair { background: none; border: 2px solid var(--papel); border-radius: 999px; padding: 6px 14px; font-weight: 600; }
 .adm { max-width: 1180px; margin: 0 auto; padding: 8px var(--gutter) 64px; }
 
-.adm-login {
-  max-width: 380px; margin: 10vh auto 0; background: var(--papel); color: var(--cafe); border-radius: var(--raio); padding: 26px 22px;
+/* ---------- Tela de entrada (mesmo esquema do Aconchego: foto de um lado, formulário do outro) ---------- */
+.adm-entrar { min-height: 100dvh; display: grid; grid-template-rows: minmax(260px, 38dvh) 1fr; background: var(--mostarda); color: var(--cafe); }
+.adm-entrar[hidden] { display: none; }
+.adm-entrar-lado { position: relative; overflow: hidden; color: var(--papel); display: flex; flex-direction: column; justify-content: space-between; padding: 22px var(--gutter); }
+.adm-entrar-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.adm-entrar-lado::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgb(42 23 11 / .55), rgb(42 23 11 / .88)); }
+.adm-entrar-logo, .adm-entrar-texto { position: relative; z-index: 1; }
+.adm-entrar-logo { color: var(--mostarda); font-size: 1.6rem; align-self: flex-start; }
+.adm-entrar-frase { margin: 0; font-weight: 800; font-size: clamp(1.7rem, 4.6vw, 3.2rem); line-height: 1; letter-spacing: -.04em; max-width: 14ch; text-wrap: balance; }
+.adm-entrar-apoio { margin: 12px 0 0; max-width: 40ch; opacity: .85; }
+.adm-entrar-form { display: grid; place-items: center; padding: 36px var(--gutter) 48px; }
+.adm-entrar-form form { width: min(100%, 380px); display: grid; gap: 6px; }
+.adm-entrar-area { margin: 0; font-weight: 700; color: var(--ketchup); }
+.adm-entrar-form h1 { margin: 0; font-weight: 800; font-size: clamp(2rem, 5vw, 2.6rem); letter-spacing: -.04em; line-height: 1.05; }
+.adm-entrar-sub { margin: 4px 0 18px; color: var(--cafe-suave); }
+.adm-entrar-campo { font-weight: 700; font-size: .9rem; }
+.adm-entrar-input { display: flex; align-items: center; gap: 10px; background: var(--papel); border: 2px solid var(--cafe); border-radius: 12px; padding: 0 12px; }
+.adm-entrar-input:focus-within { outline: 3px solid var(--cafe); outline-offset: 2px; }
+.adm-entrar-input svg { width: 20px; height: 20px; flex: none; fill: none; stroke: var(--cafe); stroke-width: 2; stroke-linecap: round; }
+.adm-entrar-input input { flex: 1; min-width: 0; border: 0; background: none; padding: 13px 0; font-size: 16px; outline: none; }
+.adm-entrar-form .erro { margin: 8px 0 4px; }
+.adm-entrar-form .enviar { margin-top: 4px; }
+.adm-entrar-link { justify-self: center; margin-top: 14px; font-weight: 600; }
+@media (min-width: 820px) {
+  .adm-entrar { grid-template-rows: none; grid-template-columns: 1.1fr 1fr; }
+  .adm-entrar-lado { padding: 36px 48px; }
 }
-.adm-login h2 { margin: 0 0 16px; font-size: 1.4rem; letter-spacing: -.02em; }
-.adm-login label { display: block; font-weight: 700; font-size: .9rem; margin-bottom: 6px; }
-.adm-login input {
-  width: 100%; padding: 12px; border: 2px solid var(--cafe); border-radius: 10px; background: #fff; font-size: 16px;
-}
+body.admin:not(.logado) { background: var(--mostarda); }
+.adm-topo[hidden] { display: none; }
+.adm-site { margin-left: auto; color: var(--mostarda); font-weight: 600; }
+.adm-topo .adm-sair { margin-left: 0; }
+.adm-topo .marca { text-decoration: none; }
 
 .adm-conferir { background: rgb(255 251 238 / .08); border-radius: var(--raio); padding: 16px; margin: 10px 0 18px; }
 .adm-conferir h2 { margin: 0 0 4px; font-size: 1.1rem; }

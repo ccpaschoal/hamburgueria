@@ -325,3 +325,5 @@ body.travado { overflow: hidden; }
 .isca { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .abrir-whats { display: block; text-align: center; text-decoration: none; margin: 4px 0 14px; }
 .abrir-whats[hidden] { display: none; }
+.rodape-admin { display: inline-block; margin-top: 14px; font-size: .8rem; font-weight: 600; opacity: .6; }
+.rodape-admin:hover, .rodape-admin:focus-visible { opacity: 1; }

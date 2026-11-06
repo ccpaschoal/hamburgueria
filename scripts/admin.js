@@ -33,9 +33,9 @@
   }
 
   /* ---------- Login ---------- */
-  $('#login').addEventListener('submit', function (e) {
+  $('#form-login').addEventListener('submit', function (e) {
     e.preventDefault();
-    var senha = $('#senha').value, erro = $('#login-erro'), botao = $('#login button');
+    var senha = $('#senha').value, erro = $('#login-erro'), botao = $('#form-login button');
     if (!senha) { erro.textContent = 'Digite a senha.'; return; }
     botao.disabled = true; erro.textContent = '';
     api('/admin/login', { method: 'POST', body: { senha: senha } }).then(function (d) {
@@ -48,7 +48,7 @@
   });
 
   function entrar() {
-    $('#login').hidden = true; $('#painel').hidden = false; $('#sair').hidden = false;
+    $('#login').hidden = true; $('#painel').hidden = false; $('#topo').hidden = false; document.body.classList.add('logado');
     carregar();
     clearInterval(timer);
     timer = setInterval(function () { if (!document.hidden) carregar(); }, 20000);
@@ -57,7 +57,7 @@
   function sair(motivo) {
     token = ''; clearInterval(timer);
     try { sessionStorage.removeItem('chapa62-admin'); } catch (e) {}
-    $('#painel').hidden = true; $('#sair').hidden = true; $('#login').hidden = false;
+    $('#painel').hidden = true; $('#topo').hidden = true; document.body.classList.remove('logado'); $('#login').hidden = false;
     $('#login-erro').textContent = motivo || '';
     $('#senha').focus();
   }

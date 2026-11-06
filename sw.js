@@ -1,7 +1,7 @@
 /* Cache do site para abrir rápido e funcionar sem internet.
    Ao mudar arquivos, troque a VERSAO (e o ?v= do CSS/JS no index.html). */
-var VERSAO = 'chapa62-v5';
-var BASE = ['./', 'styles/style.css?v=5', 'scripts/app.js?v=5', 'manifest.webmanifest',
+var VERSAO = 'chapa62-v6';
+var BASE = ['./', 'styles/style.css?v=6', 'scripts/app.js?v=6', 'manifest.webmanifest',
   'data/config.json', 'data/cardapio.json',
   'assets/fonts/bricolage-800.woff2', 'assets/fonts/bricolage-500.woff2', 'assets/fonts/mono-400.woff2', 'assets/fonts/mono-700.woff2',
   'assets/fotos/hero.jpg'];

@@ -9,25 +9,44 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://chapa62-api.aconchego-site.workers.dev http://localhost:8787; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'">
   <meta name="referrer" content="no-referrer">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232A170B'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='900' font-size='30' fill='%23EDB82E' text-anchor='middle'%3E62%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles/style.css?v=5">
-  <link rel="stylesheet" href="styles/admin.css?v=5">
+  <link rel="stylesheet" href="styles/style.css?v=6">
+  <link rel="stylesheet" href="styles/admin.css?v=6">
 </head>
 <body class="admin">
-  <header class="adm-topo">
-    <p class="marca">Chapa 62</p>
+  <section class="adm-entrar" id="login" aria-labelledby="login-titulo">
+    <div class="adm-entrar-lado">
+      <img class="adm-entrar-foto" src="assets/fotos/hero.jpg" alt="" aria-hidden="true" width="960" height="960">
+      <a class="marca adm-entrar-logo" href="./" aria-label="Chapa 62, ir para o site">Chapa 62</a>
+      <div class="adm-entrar-texto">
+        <p class="adm-entrar-frase">Cada pedido no seu lugar, da chapa até a mesa.</p>
+        <p class="adm-entrar-apoio">Pedidos, status e conferência das mensagens do WhatsApp num só painel.</p>
+      </div>
+    </div>
+    <div class="adm-entrar-form">
+      <form id="form-login" novalidate>
+        <p class="adm-entrar-area">Área privada</p>
+        <h1 id="login-titulo">Bem-vindo de volta</h1>
+        <p class="adm-entrar-sub">Entre para acompanhar os pedidos da Chapa 62.</p>
+        <label class="adm-entrar-campo" for="senha">Senha</label>
+        <span class="adm-entrar-input">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+          <input id="senha" type="password" autocomplete="current-password" placeholder="Digite sua senha" required>
+        </span>
+        <p class="erro" id="login-erro" role="alert"></p>
+        <button class="enviar" type="submit">Entrar no painel</button>
+        <a class="adm-entrar-link" href="./">Ir para o site</a>
+      </form>
+    </div>
+  </section>
+
+  <header class="adm-topo" id="topo" hidden>
+    <a class="marca" href="./" aria-label="Chapa 62, ir para o site">Chapa 62</a>
     <h1>Pedidos</h1>
-    <button type="button" class="adm-sair" id="sair" hidden>Sair</button>
+    <a class="adm-site" href="./">Ver o site</a>
+    <button type="button" class="adm-sair" id="sair">Sair</button>
   </header>
 
   <main class="adm">
-    <form class="adm-login" id="login" novalidate>
-      <h2>Entrar no admin</h2>
-      <label for="senha">Senha</label>
-      <input id="senha" type="password" autocomplete="current-password" required>
-      <p class="erro" id="login-erro" role="alert"></p>
-      <button class="enviar" type="submit">Entrar</button>
-    </form>
-
     <div id="painel" hidden>
       <section class="adm-conferir" aria-labelledby="conferir-titulo">
         <h2 id="conferir-titulo">Conferir mensagem recebida</h2>
@@ -58,6 +77,6 @@
     </div>
   </main>
 
-  <script src="scripts/admin.js?v=5" defer></script>
+  <script src="scripts/admin.js?v=6" defer></script>
 </body>
 </html>
