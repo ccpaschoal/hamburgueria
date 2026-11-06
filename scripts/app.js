@@ -70,6 +70,7 @@
     try { new Intl.DateTimeFormat('pt-BR', { timeZone: c.fuso }); } catch (e) { falha('fuso "' + c.fuso + '" inválido'); }
     c.aceitarFechado = c.aceitarFechado !== false;
     c.whatsapp = String(c.whatsapp || '').replace(/\D/g, '');
+    c.api = /^(https:\/\/[\w.-]+|http:\/\/localhost:\d+)$/.test(c.api || '') ? c.api : '';
     if (c.whatsapp && (c.whatsapp.length < 12 || c.whatsapp.length > 13)) falha('whatsapp precisa ter DDI + DDD + número, ex.: 5562999999999');
     c.instagram = String(c.instagram || '').replace(/[^\w.]/g, '').slice(0, 30);
     c.pix = typeof c.pix === 'string' ? c.pix.trim() : '';
@@ -481,28 +482,60 @@
     if (pag === 'Pix' && config.pix) linhas.push('Chave Pix: ' + config.pix);
     var msg = linhas.join('\n');
 
-    // Evita toque duplo abrindo duas conversas
-    enviando = true; $('#enviar').disabled = true;
-    setTimeout(function () { enviando = false; avisoFechado(); }, 3000);
+    // Evita toque duplo: trava até o servidor responder (e no mínimo 3 s)
+    enviando = true; $('#enviar').disabled = true; $('#enviar').textContent = 'Registrando pedido…';
+    var liberar = function () { enviando = false; $('#enviar').textContent = 'Enviar pedido no WhatsApp'; avisoFechado(); };
+    var inicio = Date.now();
 
-    var link = config.whatsapp ? 'https://wa.me/' + config.whatsapp + '?text=' + encodeURIComponent(msg) : '';
-    if (link) window.open(link, '_blank', 'noopener');
-    mostrarEnviado(msg, link);
+    registrar({
+      modo: modo, mesa: mesa, nome: nome, endereco: end, pagamento: pag, troco: trocoTxt, site: $('#site').value,
+      itens: Object.keys(comanda).map(function (id) { return { id: id, qtd: comanda[id].qtd, obs: linhaLimpa(comanda[id].obs, MAX_OBS) }; })
+    }).then(function (r) {
+      setTimeout(liberar, Math.max(0, 3000 - (Date.now() - inicio)));
+      if (r.ok) return mostrarEnviado(r.dados.mensagem, r.dados.whatsapp || config.whatsapp, r.dados.codigo);
+      if (r.erro) { erro.textContent = r.erro; return; }
+      // Servidor fora do ar: o cliente não fica sem pedir, mas a mensagem avisa que não foi registrada
+      mostrarEnviado(msg + '\n\n(Pedido sem código: não foi registrado no sistema. O restaurante confere os valores.)', config.whatsapp, '');
+    });
   });
 
-  function mostrarEnviado(msg, link) {
-    var p = $('#enviado-txt');
-    if (link) {
-      p.innerHTML = '<strong>Pedido pronto no WhatsApp.</strong> É só tocar em enviar na conversa. Se ela não abriu, ' +
-        '<a href="' + esc(link) + '" target="_blank" rel="noopener">abra o WhatsApp por aqui</a>.';
+  // Envia a comanda para a API, que recalcula tudo com o cardápio oficial e devolve código + mensagem
+  function registrar(corpo) {
+    if (!config.api) return Promise.resolve({ ok: false });
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var limite = setTimeout(function () { if (ctrl) ctrl.abort(); }, 10000);
+    return fetch(config.api + '/pedidos', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(corpo), signal: ctrl && ctrl.signal
+    }).then(function (resp) {
+      return resp.json().catch(function () { return {}; }).then(function (dados) {
+        if (resp.ok && dados.codigo && dados.mensagem) return { ok: true, dados: dados };
+        if (resp.status >= 400 && resp.status < 500 && dados.erro) return { ok: false, erro: dados.erro };
+        console.error('[Chapa 62] API respondeu ' + resp.status);
+        return { ok: false };
+      });
+    }).catch(function (e) {
+      console.error('[Chapa 62] API indisponível: ' + (e && e.name));
+      return { ok: false };
+    }).then(function (r) { clearTimeout(limite); return r; });
+  }
+
+  function mostrarEnviado(msg, numero, codigo) {
+    var p = $('#enviado-txt'), whats = $('#abrir-whats');
+    numero = String(numero || '').replace(/\D/g, '');
+    var titulo = codigo ? 'Pedido ' + codigo + ' registrado.' : 'Pedido pronto.';
+    if (numero) {
+      p.innerHTML = '<strong>' + esc(titulo) + '</strong> Agora toque no botão abaixo e envie a mensagem no WhatsApp.';
+      whats.href = 'https://wa.me/' + numero + '?text=' + encodeURIComponent(msg);
+      whats.hidden = false;
     } else {
-      p.innerHTML = '<strong>Modo demonstração.</strong> Este modelo não tem número de WhatsApp configurado. Esta é a mensagem que o restaurante receberia:';
+      p.innerHTML = '<strong>' + esc(titulo) + '</strong> Modo demonstração: este modelo não tem número de WhatsApp configurado. Esta é a mensagem que o restaurante receberia:';
+      whats.hidden = true;
     }
     $('#demo-msg').textContent = msg;
     $('#copiar-dica').textContent = '';
     $('#form-pedido').hidden = true;
     $('#demo').hidden = false;
-    $('#copiar').focus();
+    (numero ? whats : $('#copiar')).focus();
   }
 
   $('#copiar').addEventListener('click', function () {

@@ -1,0 +1,18 @@
+// API de pedidos da Chapa 62. Publicar: npm run deploy (dentro da pasta api)
+// Segredos (não ficam no repositório): ADMIN_SENHA_HASH (scripts/gerar-hash.mjs) e SESSAO_CHAVE (texto aleatório longo).
+{
+  "$schema": "https://unpkg.com/wrangler@4.157.0/config-schema.json",
+  "name": "chapa62-api",
+  "main": "src/index.js",
+  "compatibility_date": "2026-11-03",
+  "workers_dev": true,
+  "observability": { "enabled": true },
+  "triggers": { "crons": ["17 7 * * *"] },
+  "vars": {
+    "SITE_URL": "https://ccpaschoal.github.io/hamburgueria",
+    "ORIGENS": "https://ccpaschoal.github.io,http://localhost:8762"
+  },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "chapa62", "database_id": "1e6bc641-e387-4711-aef5-ac43b25af1d4", "migrations_dir": "migrations" }
+  ]
+}

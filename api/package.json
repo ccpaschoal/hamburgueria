@@ -1,0 +1,12 @@
+{
+  "name": "chapa62-api",
+  "private": true,
+  "type": "module",
+  "description": "API de pedidos da Chapa 62 (Cloudflare Worker + D1)",
+  "scripts": {
+    "test": "node --test tests/",
+    "dev": "wrangler d1 migrations apply chapa62 --local && wrangler dev --port 8787",
+    "banco": "wrangler d1 migrations apply chapa62 --remote",
+    "deploy": "wrangler deploy"
+  }
+}

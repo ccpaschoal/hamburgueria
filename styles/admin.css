@@ -1,0 +1,59 @@
+/* Admin: mesmo sistema do site, com fundo café para não confundir com a página do cliente */
+body.admin { background: var(--cafe); color: var(--papel); }
+.admin :focus-visible { outline-color: var(--mostarda); }
+.adm-topo { display: flex; align-items: baseline; gap: 14px; max-width: 1180px; margin: 0 auto; padding: 18px var(--gutter) 8px; }
+.adm-topo .marca { margin: 0; color: var(--mostarda); }
+.adm-topo h1 { margin: 0; font-size: 1.5rem; letter-spacing: -.03em; font-weight: 800; }
+.adm-sair { margin-left: auto; background: none; border: 2px solid var(--papel); border-radius: 999px; padding: 6px 14px; font-weight: 600; }
+.adm { max-width: 1180px; margin: 0 auto; padding: 8px var(--gutter) 64px; }
+
+.adm-login {
+  max-width: 380px; margin: 10vh auto 0; background: var(--papel); color: var(--cafe); border-radius: var(--raio); padding: 26px 22px;
+}
+.adm-login h2 { margin: 0 0 16px; font-size: 1.4rem; letter-spacing: -.02em; }
+.adm-login label { display: block; font-weight: 700; font-size: .9rem; margin-bottom: 6px; }
+.adm-login input {
+  width: 100%; padding: 12px; border: 2px solid var(--cafe); border-radius: 10px; background: #fff; font-size: 16px;
+}
+
+.adm-conferir { background: rgb(255 251 238 / .08); border-radius: var(--raio); padding: 16px; margin: 10px 0 18px; }
+.adm-conferir h2 { margin: 0 0 4px; font-size: 1.1rem; }
+.adm-conferir p { margin: 0 0 10px; font-size: .92rem; opacity: .85; max-width: 70ch; }
+.adm-conferir textarea {
+  width: 100%; border: 0; border-radius: 10px; padding: 10px; font: .9rem/1.4 var(--mono); background: var(--papel); color: var(--cafe); resize: vertical;
+}
+.adm-resultado { margin: 10px 0 0 !important; padding: 10px 12px; border-radius: 10px; font-weight: 700; opacity: 1 !important; }
+.adm-resultado:empty { display: none; }
+.adm-resultado.bom { background: var(--picles); color: var(--papel); }
+.adm-resultado.ruim { background: var(--ketchup); color: var(--papel); }
+
+.adm-filtros { position: sticky; top: 0; z-index: 5; background: var(--cafe); padding: 10px 0; display: grid; gap: 8px; }
+.admin .chips { padding-bottom: 2px; }
+.admin .chips a { background: rgb(255 251 238 / .1); color: var(--papel); }
+.admin .chips a[aria-current="true"] { background: var(--mostarda); color: var(--cafe); }
+.admin .busca { max-width: 260px; color: var(--cafe); }
+.adm-info { margin: 0; font-size: .82rem; opacity: .75; }
+
+.adm-lista { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); align-items: start; }
+.adm-pedido {
+  background: var(--papel); color: var(--cafe); border-radius: 12px; padding: 14px 16px; font: .9rem/1.45 var(--mono);
+  border-top: 8px solid var(--mostarda);
+}
+.adm-pedido.st-novo { border-top-color: var(--ketchup); }
+.adm-pedido.st-pronto { border-top-color: var(--picles); }
+.adm-pedido.st-concluido, .adm-pedido.st-cancelado { opacity: .6; border-top-color: rgb(42 23 11 / .3); }
+.adm-cab { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.adm-codigo { font-size: 1.15rem; letter-spacing: .08em; }
+.adm-status { font: 700 .75rem var(--sans); background: var(--cafe); color: var(--papel); padding: 2px 8px; border-radius: 6px; }
+.st-novo .adm-status { background: var(--ketchup); }
+.adm-cab time { margin-left: auto; font-size: .8rem; opacity: .7; }
+.adm-quem, .adm-end, .adm-pag { margin: 8px 0 0; }
+.adm-end { font-size: .85rem; }
+.adm-itens { list-style: none; margin: 10px 0 0; padding: 8px 0; border-top: 1px dashed var(--cafe); border-bottom: 1px dashed var(--cafe); }
+.adm-itens li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 10px; padding: 2px 0; }
+.adm-itens em { width: 100%; font-size: .8rem; padding-left: 2ch; }
+.adm-total { display: flex; justify-content: space-between; margin: 8px 0 0; font-size: 1rem; }
+.adm-acoes { display: flex; gap: 8px; margin-top: 12px; }
+.adm-acoes .enviar { width: auto; flex: 1; padding: 10px 12px; font-size: .95rem; }
+.adm-cancelar { background: none; border: 2px solid var(--cafe); border-radius: 12px; padding: 8px 12px; font: 700 .9rem var(--sans); }
+.admin .vazio { opacity: .8; }

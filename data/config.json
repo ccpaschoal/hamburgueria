@@ -2,6 +2,7 @@
   "nome": "Chapa 62",
   "descricao": "Smash burger na chapa, em Goiânia. Peça pelo celular: entrega, retirada ou direto da mesa.",
   "whatsapp": "",
+  "api": "https://chapa62-api.aconchego-site.workers.dev",
   "instagram": "chapa62",
   "endereco": "Rua 62, 380 · Setor Central",
   "cidade": "Goiânia · GO",

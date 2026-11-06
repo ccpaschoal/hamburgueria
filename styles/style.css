@@ -322,3 +322,6 @@ address { font-style: normal; font-size: 1.1rem; }
 }
 @media (min-width: 820px) { .comanda-dialog.sem-dialog[open] { inset: 0 24px 0 auto; display: flex; align-items: center; } }
 body.travado { overflow: hidden; }
+.isca { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.abrir-whats { display: block; text-align: center; text-decoration: none; margin: 4px 0 14px; }
+.abrir-whats[hidden] { display: none; }

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin · Chapa 62</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#2A170B">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://chapa62-api.aconchego-site.workers.dev http://localhost:8787; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232A170B'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='900' font-size='30' fill='%23EDB82E' text-anchor='middle'%3E62%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles/style.css?v=5">
+  <link rel="stylesheet" href="styles/admin.css?v=5">
+</head>
+<body class="admin">
+  <header class="adm-topo">
+    <p class="marca">Chapa 62</p>
+    <h1>Pedidos</h1>
+    <button type="button" class="adm-sair" id="sair" hidden>Sair</button>
+  </header>
+
+  <main class="adm">
+    <form class="adm-login" id="login" novalidate>
+      <h2>Entrar no admin</h2>
+      <label for="senha">Senha</label>
+      <input id="senha" type="password" autocomplete="current-password" required>
+      <p class="erro" id="login-erro" role="alert"></p>
+      <button class="enviar" type="submit">Entrar</button>
+    </form>
+
+    <div id="painel" hidden>
+      <section class="adm-conferir" aria-labelledby="conferir-titulo">
+        <h2 id="conferir-titulo">Conferir mensagem recebida</h2>
+        <p>Cole aqui a mensagem que chegou no WhatsApp. O admin compara com o pedido registrado e avisa se alguém mudou itens ou valores.</p>
+        <label class="sr-only" for="colar">Mensagem do WhatsApp</label>
+        <textarea id="colar" rows="4" placeholder="*Pedido K7Q2NW · Chapa 62* …"></textarea>
+        <p class="adm-resultado" id="resultado" role="status"></p>
+      </section>
+
+      <div class="adm-filtros">
+        <nav class="chips" id="filtros" aria-label="Filtrar por status">
+          <a href="#" data-status="" aria-current="true">Todos</a>
+          <a href="#" data-status="novo">Novos</a>
+          <a href="#" data-status="confirmado">Confirmados</a>
+          <a href="#" data-status="pronto">Prontos</a>
+          <a href="#" data-status="concluido">Concluídos</a>
+          <a href="#" data-status="cancelado">Cancelados</a>
+        </nav>
+        <label class="busca">
+          <span class="sr-only">Buscar pelo código</span>
+          <input type="search" id="busca-codigo" placeholder="Código, ex.: K7Q2" maxlength="6" autocomplete="off">
+        </label>
+        <p class="adm-info" id="info" aria-live="polite"></p>
+      </div>
+
+      <ul class="adm-lista" id="lista"></ul>
+      <p class="vazio" id="vazio" hidden>Nenhum pedido aqui ainda.</p>
+    </div>
+  </main>
+
+  <script src="scripts/admin.js?v=5" defer></script>
+</body>
+</html>

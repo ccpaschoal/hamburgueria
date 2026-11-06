@@ -1,7 +1,7 @@
 /* Cache do site para abrir rápido e funcionar sem internet.
    Ao mudar arquivos, troque a VERSAO (e o ?v= do CSS/JS no index.html). */
-var VERSAO = 'chapa62-v4';
-var BASE = ['./', 'styles/style.css?v=4', 'scripts/app.js?v=4', 'manifest.webmanifest',
+var VERSAO = 'chapa62-v5';
+var BASE = ['./', 'styles/style.css?v=5', 'scripts/app.js?v=5', 'manifest.webmanifest',
   'data/config.json', 'data/cardapio.json',
   'assets/fonts/bricolage-800.woff2', 'assets/fonts/bricolage-500.woff2', 'assets/fonts/mono-400.woff2', 'assets/fonts/mono-700.woff2',
   'assets/fotos/hero.jpg'];
@@ -27,6 +27,8 @@ self.addEventListener('fetch', function (e) {
   if (req.method !== 'GET' || url.origin !== location.origin) return;
 
   // Página: rede primeiro; guarda uma cópia só (sem ?mesa=, ?t=...), para o cache não crescer
+  // Admin: nunca usa cache (sempre a versão atual, nada de pedidos guardados no aparelho)
+  if (url.pathname.endsWith('/admin.html') || url.pathname.endsWith('/admin.js') || url.pathname.endsWith('/admin.css')) return;
   if (req.mode === 'navigate') {
     var chave = new URL('./', self.registration.scope).href;
     e.respondWith(fetch(req).then(function (r) { guardar(chave, r); return r; })
