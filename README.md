@@ -30,6 +30,21 @@ Fotos: Wikimedia Commons (CC0), créditos no rodapé.
 - Testes: `npm test` (dentro de `api`). Publicar a API: `npm run deploy`. Local: `npm run dev` + `.dev.vars` com senha de teste.
 
 ## Segurança e limites
+- Segredos reais ficam no Cloudflare Worker: `ADMIN_SENHA_HASH` e `SESSAO_CHAVE`.
+  `api/.dev.vars.example` documenta os nomes; os campos vazios não funcionam como credenciais.
+  Para testes locais, copie para `.dev.vars` dentro de `api` e preencha apenas com credenciais de teste.
+  `.env` e `.dev.vars`, inclusive variantes, são ignorados pelo Git; preserve os arquivos reais existentes.
+- `SITE_URL`, `ORIGENS` e `data/config.json` são públicos. CORS restringe origens no navegador;
+  o acesso administrativo depende também de token assinado, não de CORS.
+- O admin mantém o token em `sessionStorage` apenas na aba, por até 12 horas; isso reduz
+  persistência, mas não protege contra XSS. Preserve a CSP e não injete conteúdo externo sem escapar.
+- Não copie segredos para HTML, JavaScript público, arquivos `data/`, service worker ou logs.
+  Uma chave removida após vazamento ainda exige avaliar revogação/rotação no serviço.
+- O corpo JSON é limitado a 16 KiB durante a leitura, em bytes, inclusive sem Content-Length.
+- Antes de publicar: `node --test tests/` dentro de `api`, teste do cardápio/carrinho e revisão
+  do cache offline. Troque `VERSAO` em `sw.js`, os caminhos de pré-cache e `?v=` juntos.
+- GitHub Pages publica o frontend; a API é um deploy separado na Cloudflare.
+  Não são necessárias Netlify Functions nem variáveis privadas no frontend.
 - Validação no servidor: itens, quantidades (1 a 30), modo, mesa, endereço, pedido mínimo, troco, horário (`aceitarFechado`), tamanho dos campos e campo-isca contra robôs.
 - Nome, endereço e observações viram uma linha só, sem `* _ ~` — ninguém consegue inserir um "Total" falso na mensagem.
 - Os JSON são validados ao abrir; se algo estiver errado, o site mostra um aviso e o motivo aparece no console (F12).

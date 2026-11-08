@@ -1,0 +1,6 @@
+# Modelo local; não é uma configuração funcional. Não versionar valores reais.
+# ADMIN_SENHA_HASH: gerar com scripts/gerar-hash.mjs usando senha só de teste.
+ADMIN_SENHA_HASH=
+# SESSAO_CHAVE: segredo aleatório de pelo menos 32 caracteres, exclusivo do ambiente.
+SESSAO_CHAVE=
+# SITE_URL e ORIGENS são configurações públicas já definidas em wrangler.jsonc.

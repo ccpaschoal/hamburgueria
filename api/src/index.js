@@ -40,9 +40,31 @@ function json(dados, status, req, env) {
 
 async function lerCorpo(req) {
   if (!(req.headers.get('Content-Type') || '').includes('application/json')) throw new ErroPedido('Envie os dados em JSON.', 415);
-  const texto = await req.text();
-  if (texto.length > MAX_CORPO) throw new ErroPedido('Dados grandes demais.', 413);
-  try { return JSON.parse(texto); } catch { throw new ErroPedido('Dados inválidos.'); }
+  const reader = req.body?.getReader();
+  const chunks = [];
+  let size = 0;
+  if (reader) {
+    try {
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        size += value.byteLength;
+        if (size > MAX_CORPO) {
+          await reader.cancel();
+          throw new ErroPedido('Dados grandes demais.', 413);
+        }
+        chunks.push(value);
+      }
+    } finally { reader.releaseLock(); }
+  }
+  const bytes = new Uint8Array(size);
+  let offset = 0;
+  for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
+  try {
+    const body = JSON.parse(new TextDecoder().decode(bytes));
+    if (!body || typeof body !== 'object' || Array.isArray(body)) throw new Error();
+    return body;
+  } catch { throw new ErroPedido('Dados inválidos.'); }
 }
 
 // Resumo do IP: serve para limitar abusos sem guardar o endereço de ninguém

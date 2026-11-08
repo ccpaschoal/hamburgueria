@@ -45,8 +45,10 @@ export async function criarSessao(chave, agora = Date.now()) {
 }
 
 export async function sessaoValida(chave, token, agora = Date.now()) {
-  if (!chave || typeof token !== 'string') return false;
-  const [exp, assinatura] = token.split('.');
-  if (!/^\d{13}$/.test(exp || '') || Number(exp) < agora) return false;
+  if (!chave || chave.length < 32 || typeof token !== 'string') return false;
+  const partes = token.split('.');
+  if (partes.length !== 2) return false;
+  const [exp, assinatura] = partes;
+  if (!/^\d{13}$/.test(exp || '') || Number(exp) <= agora || Number(exp) > agora + HORAS_SESSAO * 3600e3) return false;
   return iguais(await assinar(chave, 'admin.' + exp), assinatura || '');
 }
