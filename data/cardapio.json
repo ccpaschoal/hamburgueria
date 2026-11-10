@@ -7,7 +7,7 @@
         { "id": "classico", "nome": "Clássico 62", "desc": "Pão de batata, smash de 90 g, cheddar derretido, picles, cebola picada e molho da casa.", "preco": 29.9, "foto": "hero", "destaque": true },
         { "id": "duplo", "nome": "Duplo", "desc": "Dois smash, duas fatias de cheddar e cebola caramelizada na chapa.", "preco": 36.9, "foto": "duplo" },
         { "id": "bacon", "nome": "Bacon na chapa", "desc": "Smash duplo, bacon crocante, cheddar e maionese defumada.", "preco": 39.9, "foto": "bacon" },
-        { "id": "picante", "nome": "Picante", "desc": "Smash, queijo prato, jalapeño, cebola roxa e maionese de pimenta.", "preco": 34.9 },
+        { "id": "picante", "nome": "Picante", "desc": "Smash, queijo prato, jalapeño, cebola roxa e maionese de pimenta.", "preco": 34.9, "foto": "picante" },
         { "id": "frango", "nome": "Frango crocante", "desc": "Sobrecoxa empanada, salada de pepino e repolho, molho picante adocicado.", "preco": 34.9, "foto": "frango" }
       ]
     },
@@ -24,15 +24,15 @@
       "nome": "Combos",
       "itens": [
         { "id": "combo62", "nome": "Combo 62", "desc": "Clássico 62, fritas da casa e refrigerante lata.", "preco": 44.9, "foto": "combo" },
-        { "id": "comboduplo", "nome": "Combo Duplo", "desc": "Duplo, fritas da casa e refrigerante lata.", "preco": 51.9 }
+        { "id": "comboduplo", "nome": "Combo Duplo", "desc": "Duplo, fritas da casa e refrigerante lata.", "preco": 51.9, "foto": "comboduplo" }
       ]
     },
     {
       "id": "porcoes",
       "nome": "Porções",
       "itens": [
-        { "id": "fritas", "nome": "Fritas da casa", "desc": "Batata com casca, sal e páprica.", "preco": 14.9, "veggie": true },
-        { "id": "fritascb", "nome": "Fritas com cheddar e bacon", "desc": "Fritas da casa cobertas com cheddar cremoso e bacon.", "preco": 22.9 },
+        { "id": "fritas", "nome": "Fritas da casa", "desc": "Batata com casca, sal e páprica.", "preco": 14.9, "foto": "fritas", "veggie": true },
+        { "id": "fritascb", "nome": "Fritas com cheddar e bacon", "desc": "Fritas da casa cobertas com cheddar cremoso e bacon.", "preco": 22.9, "foto": "fritascb" },
         { "id": "onion", "nome": "Onion rings", "desc": "Anéis de cebola empanados, com maionese da casa.", "preco": 18.9, "foto": "onion", "veggie": true }
       ]
     },
@@ -41,9 +41,9 @@
       "nome": "Bebidas",
       "itens": [
         { "id": "shake", "nome": "Shake de doce de leite", "desc": "400 ml, sorvete de creme batido com doce de leite.", "preco": 19.9, "foto": "shake", "veggie": true },
-        { "id": "limonada", "nome": "Limonada da casa", "desc": "500 ml, limão e hortelã.", "preco": 9.9, "veggie": true },
-        { "id": "refri", "nome": "Refrigerante lata", "desc": "350 ml. Pergunte os sabores na observação.", "preco": 7.0, "veggie": true },
-        { "id": "agua", "nome": "Água", "desc": "500 ml, com ou sem gás.", "preco": 5.0, "veggie": true }
+        { "id": "limonada", "nome": "Limonada da casa", "desc": "500 ml, limão e hortelã.", "preco": 9.9, "foto": "limonada", "veggie": true },
+        { "id": "refri", "nome": "Refrigerante lata", "desc": "350 ml. Pergunte os sabores na observação.", "preco": 7.0, "foto": "refri", "veggie": true },
+        { "id": "agua", "nome": "Água", "desc": "500 ml, com ou sem gás.", "preco": 5.0, "foto": "agua", "veggie": true }
       ]
     },
     {
@@ -58,12 +58,19 @@
     { "foto": "hero", "titulo": "Smash burger - Cambridge, MA", "autor": "Daderot", "licenca": "CC0" },
     { "foto": "duplo", "titulo": "Cheeseburger with fries - Massachusetts", "autor": "Daderot", "licenca": "CC0" },
     { "foto": "bacon", "titulo": "Klompus Burger With Bacon and French Fries", "autor": "Theipu", "licenca": "CC0" },
+    { "foto": "picante", "titulo": "Jalapeno cheeseburger", "autor": "jeffreyw", "licenca": "CC BY 2.0" },
     { "foto": "frango", "titulo": "Korean fried chicken sandwich - Cambridge, MA", "autor": "Daderot", "licenca": "CC0" },
     { "foto": "cogumelo", "titulo": "Mushroom vegetarian burger", "autor": "Andy Li", "licenca": "CC0" },
     { "foto": "veggie", "titulo": "Fancy Veggie Burger and Fries", "autor": "Andy Li", "licenca": "CC0" },
     { "foto": "combo", "titulo": "Cheeseburger and fries 4", "autor": "Kurtkaiser", "licenca": "CC0" },
+    { "foto": "comboduplo", "titulo": "Sriracha Double Smash Burger full meal", "autor": "JIP", "licenca": "CC BY-SA 4.0" },
+    { "foto": "fritas", "titulo": "Plate of chips at the Chalet Cafe", "autor": "Acabashi", "licenca": "CC BY-SA 4.0" },
+    { "foto": "fritascb", "titulo": "Cheese Fries", "autor": "David Goehring", "licenca": "CC BY 2.0" },
     { "foto": "onion", "titulo": "Onion rings", "autor": "Andy Li", "licenca": "CC0" },
     { "foto": "shake", "titulo": "Milo milkshake", "autor": "Andy Li", "licenca": "CC0" },
+    { "foto": "limonada", "titulo": "Mint lemonade", "autor": "Bernard Gagnon", "licenca": "CC BY-SA 3.0" },
+    { "foto": "refri", "titulo": "Glass of Coca Cola Can", "autor": "inazakira", "licenca": "CC BY-SA 2.0" },
+    { "foto": "agua", "titulo": "Ice water with lemon", "autor": "Jon Sullivan", "licenca": "Public domain" },
     { "foto": "brownie", "titulo": "Brownie cake with ice cream", "autor": "Gayathrijagan", "licenca": "CC0" }
   ]
 }
