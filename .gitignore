@@ -12,3 +12,5 @@ api/.dev.vars.*
 api/.wrangler/
 api/node_modules/
 .wrangler/
+.claude/
+.copilot/
